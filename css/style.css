@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-content:center;
+    height: 99vh;
+    border: 1px solid gray;
+    background-image: url('/assets/wallpaper1.png');
+    background-position: center;
+    background-size: 100%;
+}
+
+.window {
+    display: flex;
+    justify-content: center;
+    align-content:center;
+    background-image: url('/assets/window1.png');
+    background-position: center;
+    background-size: 100% 100%;
+    width: 70%;
+    height: 100%;
+}
+.shoot{
+    margin-top: 130px;
+    border-radius: 16%;
+    border: 1px solid lightgreen;
+    width: 74%;
+    height: 69%;
+}
