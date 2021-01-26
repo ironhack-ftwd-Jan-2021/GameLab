@@ -8,6 +8,7 @@ html, body {
 }
 img {
     max-width: 100%;
+    border: none;
 }
 
 .main {
@@ -15,7 +16,6 @@ img {
     justify-content: center;
     align-content:center;
     height: 99vh;
-    border: 1px solid gray;
     background-image: url('/assets/wallpaper1.png');
     background-position: center;
     background-size: 100%;
@@ -40,10 +40,16 @@ img {
 }
 
 #bug {
-    width: 120px;
+    /* background-image: url('/assets/bug1.png'); */
+    background-size: cover;
+    background-position: center no-repeat;
+    /* border: 1px solid blue; */
+    max-width: 75px;
+    height: 100px;
 }
+
 #worm {
-    width: 30px;
+    width: 10%;
 }
 
 .scoreContainer {
@@ -56,7 +62,7 @@ img {
     position: relative;
     color: rgb(118, 84, 27);
     font-size: 6rem;
-    left: 200px;
+    left: 65%;
     top: 15px;
     z-index: 99;
 }
@@ -78,8 +84,8 @@ img {
     position: relative;
     color: rgb(118, 84, 27);
     font-size: 2.4rem;
-    top: 100px;
-    left: 50px;
+    top: 12%;
+    left: 10%;
     z-index: 999;
 }
 
@@ -87,7 +93,6 @@ img {
     height: 180px;
     position: relative;
     z-index: 99;
-    margin: 0 auto;
     right: 20px;
     transform: rotate(-6deg);
 }

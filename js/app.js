@@ -4,33 +4,42 @@ shoot.addEventListener('click', (e) => {
     console.log('clicked');
 })
 
-shoot.addEventListener('mousemove', (e) => {
-    let log = document.querySelector('#log');
-    log.innerText = `Screen X/Y: ${e.screenX}, ${e.screenY}`
-});
+// shoot.addEventListener('mousemove', (e) => {
+//     let log = document.querySelector('#log');
+//     log.innerText = `Screen X/Y: ${e.screenX}, ${e.screenY}`
+// });
 
-const bugs = document.querySelector('.bug');
+const bugs = document.querySelector('#bug');
 bugs.addEventListener('click', () => {
     moveBug();
-    console.log("bug");
+    randomImage();
+    console.log(bugs);
     increaseScore();
 })
 
-const moveBug = () => {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    bugs.style.top = randomPos(w) + 'px';
-    bugs.style.left = randomPos(h) + 'px';
+const bugArr = new Array('/assets/worm1.png', '/assets/bug1.png', '/assets/spider1.png')
+function randomImage() {
+    let randomBug = Math.floor(Math.random() * bugArr.length);
+    document.querySelector('#bug').src = bugArr[randomBug];
 }
 
+const moveBug = () => {
+    const topCords = randomPos(650);
+    const leftCords = randomPos(800);
+    bugs.style.top = `${topCords}px`;
+    bugs.style.left = `${leftCords}px`;
+}
 
 const increaseScore = () => {
-    const score = document.querySelector("#score-counter span").innerHTML;
-    let count = Number(score);
+    const score = document.querySelector("#score-counter").innerHTML;
+    let count = score;
+    console.log('Score: ',count);
     score.innerHTML = count + 1;
 }
 
 const randomPos = (num) => {
-    return Math.floor(Math.random() * Math.floor(num))
+    let randomNum = Math.floor(Math.random() * Math.floor(num));
+    console.log('random position: ',randomNum);
+    return randomNum;
 }
 
