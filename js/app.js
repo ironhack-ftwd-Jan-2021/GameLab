@@ -61,20 +61,25 @@ const randomPos = () => {
 
 // timer for the game
 let counter = 0;
-let timeLeft = 30;
+let timeLeft = 5;
 const countDown = () => {
+
     let timer = document.querySelector('#timer');
     timer.innerHTML = `${timeLeft - counter}`;
+
+    const interval = setInterval(timeIt, 1000);
 
     function timeIt() {
         counter ++;
         timer.innerHTML = `${timeLeft - counter}`;
-    }
-    setInterval(timeIt, 1000);
 
-    if(timeLeft <= 0 || score < 40) {
-        return gameOver();
-    } else if (timeLeft < 0){
-        return gameWon();
+        if(counter == timeLeft|| score < 40) {
+            counter = 0;
+            clearInterval(interval);
+        } else if (counter == timeLeft && score > 40 ){
+            counter = 0;
+            clearInterval(interval);
+        }
     }
+    
 }
