@@ -26,7 +26,7 @@ bugs.addEventListener('click', () => {
 })
 
 //radnomImage() generates a random image from the array
-const bugArr = new Array('/assets/bug1.png', '/assets/bug2.png', '/assets/bug3.png', '/assets/bug4.png')
+const bugArr = new Array('https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug1.png', 'https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug2.png', 'https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug3.png', 'https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug4.png')
 const randomImage = () => {
     let randomBug = Math.floor(Math.random() * bugArr.length);
     document.querySelector('.bugs').src = bugArr[randomBug];
