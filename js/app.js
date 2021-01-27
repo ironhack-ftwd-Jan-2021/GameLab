@@ -3,11 +3,16 @@
 //     let log = document.querySelector('#log');
 //     log.innerText = `Screen X/Y: ${e.screenX}, ${e.screenY}`
 // });
-// const modal = document.querySelector('.modal');
-// const startBtn = document.querySelector('#startBtn');
-// startBtn.addEventListener('click', () => {
-//     modal.style.display = "none"
-// })
+
+
+const modal = document.querySelector('.modal');
+const overlay = document.querySelector('.overlay')
+const startBtn = document.querySelector('#startBtn');
+startBtn.addEventListener('click', () => {
+    modal.style.display = "none"
+    overlay.style.display = "none";
+    countDown();
+})
 
 
 // mouse click on the image of the bug should call 3 functions:
@@ -39,11 +44,11 @@ const moveBug = () => {
 }
 
 // increaseScore() should increase the score whenever the user clicks
-// on the image of the bug, 
+// on the image of the bug,
+let count = 0;
 const increaseScore = () => {
-    const score = document.querySelector(".scoreContainer #score-counter span").innerHTML;
-    let count = 0;
-    score.innerHTML = count++;
+    const score = document.querySelector("#score")
+    score.innerHTML = `×  ${count++}`;
     // console.log('Count: ', count, 'Score: ',score);
 }
 
@@ -54,3 +59,22 @@ const randomPos = () => {
     return randomNum;
 }
 
+// timer for the game
+let counter = 0;
+let timeLeft = 30;
+const countDown = () => {
+    let timer = document.querySelector('#timer');
+    timer.innerHTML = `${timeLeft - counter}`;
+
+    function timeIt() {
+        counter ++;
+        timer.innerHTML = `${timeLeft - counter}`;
+    }
+    setInterval(timeIt, 1000);
+
+    if(timeLeft <= 0 || score < 40) {
+        return gameOver();
+    } else if (timeLeft < 0){
+        return gameWon();
+    }
+}
