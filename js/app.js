@@ -1,15 +1,9 @@
-// const shoot = document.querySelector('.shoot');
-// shoot.addEventListener('mousemove', (e) => {
-//     let log = document.querySelector('#log');
-//     log.innerText = `Screen X/Y: ${e.screenX}, ${e.screenY}`
-// });
-
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay')
 const startBtn = document.querySelector('#startBtn');
 startBtn.addEventListener('click', () => {
-    modal.style.display = "none"
+    modal.style.display = "none";
     overlay.style.display = "none";
     countDown();
 })
@@ -22,25 +16,23 @@ bugs.addEventListener('click', () => {
     moveBug();
     randomImage();    
     increaseScore();
-    // console.log(bugs);
 })
 
 //radnomImage() generates a random image from the array
-const bugArr = new Array('https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug1.png', 'https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug2.png', 'https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug3.png', 'https://ironhack-ftwd-jan-2021.github.io/GameLab/assets/bug4.png')
+const bugArr = new Array('/assets/bug1.png', '/assets/bug2.png', '/assets/bug3.png', '/assets/bug4.png')
 const randomImage = () => {
     let randomBug = Math.floor(Math.random() * bugArr.length);
     document.querySelector('.bugs').src = bugArr[randomBug];
 }
 
+
 // moveBug() should move the image of the bug to a random position
 // on the area of the screen
-
 const moveBug = () => {
     let topCords = randomPos();
     let leftCords = randomPos();
     bugs.style.top = `${topCords}px`;
     bugs.style.left = `${leftCords}px`;
-    console.log();
 }
 
 // increaseScore() should increase the score whenever the user clicks
@@ -49,13 +41,11 @@ let count = 0;
 const increaseScore = () => {
     const score = document.querySelector("#score")
     score.innerHTML = `×  ${count++}`;
-    // console.log('Count: ', count, 'Score: ',score);
 }
 
 // randomPos() should move the image on a radnom place on the screen
 const randomPos = () => {
     let randomNum = Math.floor(Math.random() * 500);
-    // console.log('random position: ',randomNum);
     return randomNum;
 }
 
@@ -63,7 +53,6 @@ const randomPos = () => {
 let counter = 0;
 let timeLeft = 5;
 const countDown = () => {
-
     let timer = document.querySelector('#timer');
     timer.innerHTML = `${timeLeft - counter}`;
 
@@ -72,14 +61,23 @@ const countDown = () => {
     function timeIt() {
         counter ++;
         timer.innerHTML = `${timeLeft - counter}`;
-
-        if(counter == timeLeft|| score < 40) {
+    
+        if(counter == timeLeft || score < 40) {
+            counter = 0;
+            console.log('win')
+            clearInterval(interval);
+            gameWin();
+        }
+         else if (counter == timeLeft || score > 40){
             counter = 0;
             clearInterval(interval);
-        } else if (counter == timeLeft && score > 40 ){
-            counter = 0;
-            clearInterval(interval);
+            gameLose();
         }
     }
-    
+}
+const gameWin = () => {
+    window.open("/assets/winVid.mp4")
+}
+const gameLose = () => {
+    window.open("")
 }
