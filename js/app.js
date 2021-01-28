@@ -19,7 +19,7 @@ bugs.addEventListener('click', () => {
 })
 
 //radnomImage() generates a random image from the array
-const bugArr = new Array('/assets/bug1.png', '/assets/bug2.png', '/assets/bug3.png', '/assets/bug4.png')
+const bugArr = new Array('../assets/bug1.png', '../assets/bug2.png', '../assets/bug3.png', '../assets/bug4.png')
 const randomImage = () => {
     let randomBug = Math.floor(Math.random() * bugArr.length);
     document.querySelector('.bugs').src = bugArr[randomBug];
@@ -51,10 +51,11 @@ const randomPos = () => {
 
 // timer for the game
 let counter = 0;
-let timeLeft = 5;
+let timeLeft = 10;
 const countDown = () => {
     let timer = document.querySelector('#timer');
     timer.innerHTML = `${timeLeft - counter}`;
+    let randomTime = setInterval(randomImage, 1000);
 
     const interval = setInterval(timeIt, 1000);
 
@@ -62,13 +63,14 @@ const countDown = () => {
         counter ++;
         timer.innerHTML = `${timeLeft - counter}`;
     
-        if(counter == timeLeft || score < 40) {
+        if(counter == timeLeft || score > 30) {
             counter = 0;
             console.log('win')
             clearInterval(interval);
+            location.reload();
             gameWin();
         }
-         else if (counter == timeLeft || score > 40){
+         else if (counter == timeLeft || score > 30){
             counter = 0;
             clearInterval(interval);
             gameLose();
@@ -76,7 +78,7 @@ const countDown = () => {
     }
 }
 const gameWin = () => {
-    window.open("/assets/winVid.mp4")
+    window.open("../assets/winVid.mp4")
 }
 const gameLose = () => {
     window.open("")
