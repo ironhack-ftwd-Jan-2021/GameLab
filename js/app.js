@@ -10,7 +10,7 @@ startBtn.addEventListener('click', () => {
 
 
 //radnomImage() generates a random image from the array
-const bugArr = new Array('../assets/bug1.png', '../assets/bug2.png', '../assets/bug3.png', '../assets/bug4.png')
+const bugArr = new Array('./assets/bug1.png', './assets/bug2.png', './assets/bug3.png', './assets/bug4.png')
 const randomImage = () => {
     let randomBug = Math.floor(Math.random() * bugArr.length);
     document.querySelector('.bugs').src = bugArr[randomBug];
